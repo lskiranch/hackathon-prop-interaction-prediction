@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Clicks Prediction API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+    <h1 style="color:Tomato;">Please enter your property details as below</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <label style="color:SlateBlue;" for="house_type">House Type :</label> 
+    	<select id="house_type" name="house_type">
+          <option value="0.5">RK1</option>
+          <option value="1">BHK1</option>
+          <option value="2" selected>BHK2</option>
+          <option value="3">BHK3</option>
+          <option value="4">BHK4</option>
+          <option value="5">BHK4PLUS</option> 
+        </select> <br>
+    	<label style="color:SlateBlue;" for="floor">Floor :</label>
+        <input type="text" name="floor" placeholder="floor" required="required" /> <br>
+        <label style="color:SlateBlue;" for="floor">Total Floors :</label>
+        <input type="text" name="total_floors" placeholder="total_floors" required="required" /> <br>
+        <label style="color:SlateBlue;" for="furnishing">Furnishing Type:</label> 
+       	<select id="furnishing_type" name="furnishing_type">
+             <option value="0">NOT_FURNISHED1</option>
+             <option value="1">SEMI_FURNISHED</option>
+             <option value="2" selected>FULLY_FURNISHED</option>
+           </select> <br>
+        <label style="color:SlateBlue;" for="gym">Gym :</label>
+		<select id="gym" name="gym">
+            <option value="1">Yes</option>
+            <option value="0" selected>No</option>
+        </select> <br>
+		<label style="color:SlateBlue;" for="lift">Lift :</label>
+		<select id="lift" name="lift">
+            <option value="1" selected>Yes</option>
+            <option value="0" >No</option>
+        </select> <br>
+		<label style="color:SlateBlue;" for="property_age">Property age :</label>
+		<input type="text" name="property_age" placeholder="property_age" required="required" /> <br>
+		<label style="color:SlateBlue;" for="property_size">Property Size (In Sqft):</label>
+		<input type="text" name="property_size" placeholder="property_size" required="required" /> <br>
+		<label style="color:SlateBlue;" for="swimming_pool">Swimming pool :</label>
+    	<select id="swimming_pool" name="swimming_pool">
+            <option value="1">Yes</option>
+            <option value="0" selected>No</option>
+        </select> <br>
+		<label style="color:SlateBlue;" for="rent">Rent :</label>
+		<input type="text" name="rent" placeholder="rent" required="required" /> <br>
+		<label style="color:SlateBlue;" for="deposit">Deposit :</label>
+		<input type="text" name="deposit" placeholder="deposit" required="required" /> <br>
+		<label style="color:SlateBlue;" for="photo_count">photo count :</label>
+		<input type="text" name="photo_count" placeholder="photo_count" required="required" /> <br>
+		<label style="color:SlateBlue;" for="lease_type">Lease type :</label>
+		<select id="lease_type" name="lease_type">
+          <option value="ANYONE" selected>ANYONE</option>
+          <option value="FAMILY">FAMILY</option>
+          <option value="BACHELOR" >BACHELOR</option>
+          <option value="COMPANY">COMPANY</option>
+        </select> <br>
+		<label style="color:SlateBlue;" for="parking">Parking :</label>
+		<select id="parking" name="parking">
+          <option value="TWO_WHEELER" selected>TWO_WHEELER</option>
+          <option value="FOUR_WHEELER">FOUR_WHEELER</option>
+          <option value="BOTH" >BOTH</option>
+          <option value="NONE">NONE</option>
+        </select> <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
